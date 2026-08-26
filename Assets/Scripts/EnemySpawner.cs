@@ -51,8 +51,9 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!_isSpawnFinished || _activeEnemies.Count > 0) return;
 
-        _onWaveFinished?.Invoke();
+        Action onWaveFinished = _onWaveFinished;
         _onWaveFinished = null;
+        onWaveFinished?.Invoke();
     }
 
 }
