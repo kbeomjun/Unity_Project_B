@@ -27,6 +27,8 @@ public class ActiveRing : MonoBehaviour
 
     public void StopActiveAnimation()
     {
+        if (_rect == null) _rect = GetComponent<RectTransform>();
+
         _rect.DOKill();
         _rect.localRotation = Quaternion.identity;
         _rect.gameObject.SetActive(false);
