@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SplineMover
   _spriteRenderer: {fileID: 1479481488313045131}
   _animator: {fileID: 1861396579766867997}
+  _speed: 0.02
 --- !u!1 &5431180019819578509
 GameObject:
   m_ObjectHideFlags: 0

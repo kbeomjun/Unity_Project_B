@@ -9,6 +9,7 @@ public class TowerData : ScriptableObject
     [SerializeField] private GameObject _previewPrefab;
     [SerializeField] private float _range;
     [SerializeField] private int _cost;
+    [SerializeField] private float _attackCooldown;
 
     public string TowerName => _towerName;
     public Sprite Icon => _icon;
@@ -16,4 +17,5 @@ public class TowerData : ScriptableObject
     public GameObject PreviewPrefab => _previewPrefab;
     public float Range => _range;
     public int Cost => _cost;
+    public float AttackCooldown => _attackCooldown;
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   _previewPrefab: {fileID: 1628271738554773605, guid: 62776d50893455041bf1f891d2c3c25d, type: 3}
   _range: 6
   _cost: 0
+  _attackCooldown: 1
