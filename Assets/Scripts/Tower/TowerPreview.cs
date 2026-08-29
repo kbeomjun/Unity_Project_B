@@ -8,14 +8,14 @@ public class TowerPreview : MonoBehaviour
 
     public CapsuleCollider2D PlacementCollider => _placementCollider;
 
+    public void Init(TowerData data)
+    {
+        _rangeCircle.localScale = Vector3.one * data.Range;
+    }
+
     public void SetPosition(Vector3 position)
     {
         transform.position = position;
-    }
-
-    public void SetRange(float range)
-    {
-        _rangeCircle.localScale = Vector3.one * range;
     }
 
     public void SetPlaceable(bool canPlace)

@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private SplineContainer _spline;
     private float _speed = 0.05f;
     private float _progress = 0.0f;
+    public float Progress => _progress;
     private Action<EnemyController> _onDestroyed;
 
     public void Init(SplineContainer spline, Action<EnemyController> onDestroyed)

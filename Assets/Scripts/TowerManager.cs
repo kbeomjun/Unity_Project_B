@@ -45,7 +45,7 @@ public class TowerManager : MonoBehaviour
         DestroyPreview();
         GameObject previewObject = Instantiate(_selectedTowerData.PreviewPrefab);
         _towerPreview = previewObject.GetComponent<TowerPreview>();
-        _towerPreview.SetRange(_selectedTowerData.Range);
+        _towerPreview.Init(_selectedTowerData);
         ChangeState(TowerManagerState.Placing); 
     }
 
@@ -101,7 +101,8 @@ public class TowerManager : MonoBehaviour
         if (!CanPlace()) return;
 
         Vector3 position = _towerPreview.transform.position;
-        Instantiate(_selectedTowerData.TowerPrefab, position, Quaternion.identity);
+        GameObject tower = Instantiate(_selectedTowerData.TowerPrefab, position, Quaternion.identity);
+        tower.GetComponent<TowerController>().Init(_selectedTowerData);
         CancelPlacement();
     }
 

@@ -16,5 +16,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _towerPrefab: {fileID: 1628271738554773605, guid: 43acd856f3fc54d4fb4ba0527600ac5a, type: 3}
   _previewPrefab: {fileID: 1628271738554773605, guid: 62776d50893455041bf1f891d2c3c25d, type: 3}
-  _range: 1
+  _range: 6
   _cost: 0
