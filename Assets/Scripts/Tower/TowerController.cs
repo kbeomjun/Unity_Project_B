@@ -78,7 +78,6 @@ public class TowerController : MonoBehaviour
     {
         if (_isAttacking) return;
 
-        Debug.Log($"Attack");
         _isAttacking = true;
         _animator.SetTrigger("Attack");
     }
@@ -108,7 +107,6 @@ public class TowerController : MonoBehaviour
                 Attack();
             }
         }
-
     }
 
 }

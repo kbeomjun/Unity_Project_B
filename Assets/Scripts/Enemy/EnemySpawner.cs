@@ -37,12 +37,14 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(EnemyController enemyPrefab)
     {
         EnemyController enemy = Instantiate(enemyPrefab, _startPoint.position, Quaternion.identity);
-        enemy.Init(_spline, OnEnemyDestroyed);
+        enemy.Init(_spline);
+        enemy.OnDestroyed += OnEnemyDestroyed;
         _activeEnemies.Add(enemy);
     }
 
     private void OnEnemyDestroyed(EnemyController enemy)
     {
+        enemy.OnDestroyed -= OnEnemyDestroyed;
         _activeEnemies.Remove(enemy);
         CheckWaveFinished();
     }

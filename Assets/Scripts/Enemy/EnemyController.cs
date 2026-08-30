@@ -11,17 +11,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _speed = 0.02f;
     private float _progress = 0.0f;
     public float Progress => _progress;
-    private Action<EnemyController> _onDestroyed;
+    public event Action<EnemyController> OnDestroyed;
 
-    public void Init(SplineContainer spline, Action<EnemyController> onDestroyed)
+    public void Init(SplineContainer spline)
     {
         _spline = spline;
-        _onDestroyed = onDestroyed;
     }
 
     private void Die()
     {
-        _onDestroyed?.Invoke(this);
+        OnDestroyed?.Invoke(this);
         Destroy(gameObject);
     }
 
