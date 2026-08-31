@@ -459,8 +459,8 @@ MonoBehaviour:
   _waveContinueActiveRing: {fileID: 1725102799}
   _waveDatas:
   - {fileID: 11400000, guid: 9230158c57495e84cbfcca1b0ad72021, type: 2}
-  - {fileID: 11400000, guid: 93d0390418d8a5a429e7639f0b2367e4, type: 2}
-  - {fileID: 11400000, guid: e18c7732cb8842a4fa08fc0b72ecd652, type: 2}
+  - {fileID: 11400000, guid: 94f567d2a13b3334abdd2c82141ef432, type: 2}
+  - {fileID: 11400000, guid: 8e839477337e0f042bd540764a720f8a, type: 2}
 --- !u!1 &698195865
 GameObject:
   m_ObjectHideFlags: 0

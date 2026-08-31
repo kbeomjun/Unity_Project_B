@@ -4,7 +4,13 @@ using UnityEngine;
 [Serializable]
 public class EnemySpawnData
 {
-    public EnemyController enemyPrefab;
-    public int count;
-    public float spawnInterval;
+    [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private EnemyController _enemyPrefab;
+    [SerializeField] private int _count;
+    [SerializeField] private float _spawnInterval;
+
+    public EnemyData EnemyData => _enemyData;
+    public EnemyController EnemyPrefab => _enemyPrefab;
+    public int Count => _count;
+    public float SpawnInterval => _spawnInterval;
 }

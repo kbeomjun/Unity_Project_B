@@ -22,22 +22,22 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnWave(WaveData waveData)
     {
-        foreach (EnemySpawnData spawnData in waveData.enemySpawnDatas)
+        foreach (EnemySpawnData spawnData in waveData.EnemySpawnDatas)
         {
-            for (int i = 0; i < spawnData.count; i++)
+            for (int i = 0; i < spawnData.Count; i++)
             {
-                SpawnEnemy(spawnData.enemyPrefab);
-                yield return new WaitForSeconds(spawnData.spawnInterval);
+                SpawnEnemy(spawnData.EnemyData, spawnData.EnemyPrefab);
+                yield return new WaitForSeconds(spawnData.SpawnInterval);
             }
         }
 
         _isSpawnFinished = true;
     }
 
-    private void SpawnEnemy(EnemyController enemyPrefab)
+    private void SpawnEnemy(EnemyData enemyData, EnemyController enemyPrefab)
     {
         EnemyController enemy = Instantiate(enemyPrefab, _startPoint.position, Quaternion.identity);
-        enemy.Init(_spline);
+        enemy.Init(enemyData, _spline);
         enemy.OnDestroyed += OnEnemyDestroyed;
         _activeEnemies.Add(enemy);
     }

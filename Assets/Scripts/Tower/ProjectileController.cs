@@ -3,6 +3,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private float _speed = 15.0f;
+    [SerializeField] private float _damage = 20.0f;
 
     private SpriteRenderer _spriteRenderer;
     private EnemyController _target;
@@ -15,7 +16,7 @@ public class ProjectileController : MonoBehaviour
 
     private void HitTarget()
     {
-        Debug.Log($"Hit Target: {_target.name}");
+        _target.TakeDamage(_damage);
         Destroy(gameObject);
     }
 

@@ -21,7 +21,7 @@ public class TowerController : MonoBehaviour
         _towerData = data;
         _rangeCircle.localScale = Vector3.one * data.Range;
         _range = _rangeCircle.GetComponent<SpriteRenderer>().bounds.extents.x;
-        _rangeCircle.gameObject.SetActive(true);
+        _rangeCircle.gameObject.SetActive(false);
         _attackTimer = 0.0f;
         _attackController = GetComponent<TowerAttackController>();
         _attackController.Init();
@@ -39,7 +39,7 @@ public class TowerController : MonoBehaviour
         {
             EnemyController enemy = enemyCollider.GetComponentInParent<EnemyController>();
 
-            if (enemy == null) continue;
+            if (enemy == null || enemy.State == EnemyState.Dead) continue;
 
             float progress = enemy.Progress;
 

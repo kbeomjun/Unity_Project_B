@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7940a1ae0dd9d1418631176c49194f7, type: 3}
   m_Name: Stage01_Wave02
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
-  enemySpawnDatas:
-  - enemyPrefab: {fileID: 5848090979954732457, guid: 3dcd2f2143de2354da3b8645ff9b2fa2, type: 3}
-    count: 5
-    spawnInterval: 0.5
+  _enemySpawnDatas:
+  - _enemyData: {fileID: 11400000, guid: c60836d2b689faf40ab2266f34c9497a, type: 2}
+    _enemyPrefab: {fileID: 5848090979954732457, guid: 3dcd2f2143de2354da3b8645ff9b2fa2, type: 3}
+    _count: 5
+    _spawnInterval: 0.5
