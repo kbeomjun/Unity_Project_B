@@ -5,6 +5,6 @@ public class KnockbackEffect : AttackEffect
 {
     public override void Apply(TowerController attacker, EnemyController target)
     {
-        target.ApplyKnockback(attacker.Stats.Knockback);
+        target.ApplyKnockback(attacker.Stats.Knockback, 0.2f);
     }
 }

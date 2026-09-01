@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6666968621620988986}
   - component: {fileID: 7679675687485446382}
+  - component: {fileID: 5520655651126088280}
   - component: {fileID: 6892039818581383814}
-  - component: {fileID: 5532722819224626151}
   m_Layer: 9
   m_Name: Lancer
   m_TagString: Untagged
@@ -53,6 +53,20 @@ MonoBehaviour:
   _animator: {fileID: 1576362961196252701}
   _rangeCircle: {fileID: 4039144707931516251}
   _placementCollider: {fileID: 7718944358650489508}
+  _rightFirePoint: {fileID: 0}
+  _leftFirePoint: {fileID: 0}
+--- !u!114 &5520655651126088280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628271738554773605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9d520ff132cb47a47cbe272991548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerTargetFinder
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -68,22 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc26cdb79c78a84abaf18c2e643ce27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttackController
---- !u!114 &5532722819224626151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628271738554773605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97bc78b7ac08ccc4fb70e1a27824607d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
-  _spriteRenderer: {fileID: 8257952871516983087}
-  _projectilePrefab: {fileID: -4512764681886010749, guid: 4fa81c1061697c94383e7b2962265773, type: 3}
-  _RightFirePoint: {fileID: 0}
-  _LeftFirePoint: {fileID: 0}
+  _effects:
+  - {fileID: 11400000, guid: b54e6849c462fa745b227483f03fbd76, type: 2}
+  - {fileID: 11400000, guid: 58bfc72ca51c2c4419235a51a41ce5ed, type: 2}
 --- !u!1 &1837800664093240262
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
+using DG.Tweening;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
-using DG.Tweening;
 
 public enum EnemyState
 {
     Idle,
+    Knockback,
     Dead
 }
 
@@ -19,8 +21,11 @@ public class EnemyController : MonoBehaviour
     private float _currentHealth;
     private SplineContainer _spline;
     private float _progress = 0.0f;
+    private float _splineLength;
     private EnemyState _state = EnemyState.Idle;
-    
+    private float _knockbackRemaining;
+    private float _knockbackSpeed;
+
     public float Progress => _progress;
     public EnemyState State => _state;
     public event Action<EnemyController> OnDestroyed;
@@ -29,6 +34,7 @@ public class EnemyController : MonoBehaviour
     {
         _data = data;
         _spline = spline;
+        _splineLength = _spline.CalculateLength();
         _currentHealth = _data.MaxHealth;
         _state = EnemyState.Idle;
         _enemyUI.Init(_currentHealth, _data.MaxHealth);
@@ -48,9 +54,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void ApplyKnockback(float knockback)
+    public void ApplyKnockback(float distance, float duration)
     {
+        if (_state == EnemyState.Dead) return;
 
+        _state = EnemyState.Knockback;
+        _knockbackRemaining = distance;
+        _knockbackSpeed = distance / duration;
     }
 
     private void Dead()
@@ -65,24 +75,59 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        _progress += _data.Speed * Time.deltaTime;
+        switch (_state)
+        {
+            case EnemyState.Idle:
+                MoveForward();
+                break;
+
+            case EnemyState.Knockback:
+                MoveBackward();
+                break;
+        }
+
+        UpdatePosition();
+
+        if (_progress >= 1.0f)
+        {
+            Dead();
+        }
+    }
+
+    private void MoveForward()
+    {
+        float distance = _data.Speed * Time.deltaTime;
+        float progressDelta = distance / _splineLength;
+        _progress += progressDelta;
+    }
+
+    private void MoveBackward()
+    {
+        float distance = _knockbackSpeed * Time.deltaTime;
+        float progressDelta = distance / _splineLength;
+        _progress = _progress < progressDelta ? 0.0f : _progress - progressDelta;
+        _knockbackRemaining -= distance;
+
+        if (_knockbackRemaining <= 0.0f)
+        {
+            _knockbackRemaining = 0.0f;
+            _state = EnemyState.Idle;
+        }
+    }
+
+    private void UpdatePosition()
+    {
         _progress = Mathf.Clamp01(_progress);
-        
         Vector3 nextPosition = _spline.EvaluatePosition(_progress);
         Vector3 direction = nextPosition - transform.position;
         transform.position = nextPosition;
 
-        if (Mathf.Abs(direction.x) > 0.001f)
+        if (_state == EnemyState.Idle && Mathf.Abs(direction.x) > 0.001f)
         {
-            _spriteRenderer.flipX = direction.x < 0;
+            _spriteRenderer.flipX = direction.x < 0.0f;
         }
 
         _animator.SetBool("IsMoving", true);
-
-        if(_progress >= 1.0f)
-        {
-            Dead();
-        }
     }
 
     private void PlayHitEffect()

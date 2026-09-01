@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d70d3e665fe0d9419849c21cab5a8eb, type: 3}
-  m_Name: EnemyData
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  _name: Warrior
-  _maxHealth: 100
-  _speed: 3
+  m_Script: {fileID: 11500000, guid: ebf24cf348cf38d48aa8f1679d54304c, type: 3}
+  m_Name: KnockbackEffect
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackEffect
