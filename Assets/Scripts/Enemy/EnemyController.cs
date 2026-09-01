@@ -48,6 +48,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void ApplyKnockback(float knockback)
+    {
+
+    }
+
     private void Dead()
     {
         if (_state == EnemyState.Dead) return;

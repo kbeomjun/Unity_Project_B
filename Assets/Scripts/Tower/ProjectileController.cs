@@ -1,28 +1,45 @@
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private float _speed = 15.0f;
-    [SerializeField] private float _damage = 20.0f;
 
     private SpriteRenderer _spriteRenderer;
+    private TowerController _attacker;
     private EnemyController _target;
+    private List<AttackEffect> _effects;
 
-    public void Init(EnemyController target)
+    public void Init(TowerController attacker, EnemyController target, List<AttackEffect> effects)
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _attacker = attacker;
         _target = target;
+        _effects = effects;
     }
 
     private void HitTarget()
     {
-        _target.TakeDamage(_damage);
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        foreach (AttackEffect effect in _effects)
+        {
+            if (effect == null) continue;
+
+            effect.Apply(_attacker, _target);
+        }
+
         Destroy(gameObject);
     }
 
     private void Update()
     {
-        if (_target == null)
+        if (_target == null || _target.State == EnemyState.Dead)
         {
             Destroy(gameObject);
             return;

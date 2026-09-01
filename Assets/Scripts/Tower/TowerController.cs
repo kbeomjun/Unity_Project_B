@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
@@ -6,57 +7,48 @@ public class TowerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _rangeCircle;
     [SerializeField] private CapsuleCollider2D _placementCollider;
-    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private Transform _rightFirePoint;
+    [SerializeField] private Transform _leftFirePoint;
 
-    private TowerData _towerData;
+    private TowerData _data;
+    private TowerStats _stats;
     private float _range;
-    private EnemyController _target;
+    private List<EnemyController> _targets;
     private float _attackSpeed = 1.0f;
     private float _attackTimer = 0.0f;
-    private TowerAttackController _attackController;
+    private TowerTargetFinder _targetFinder;
+    private TowerAttack _towerAttack;
     private bool _isAttacking = false;
+
+    public TowerData Data => _data;
+    public TowerStats Stats => _stats;
 
     public void Init(TowerData data)
     {
-        _towerData = data;
+        _data = data;
+        _stats = new TowerStats(data);
         _rangeCircle.localScale = Vector3.one * data.Range;
         _range = _rangeCircle.GetComponent<SpriteRenderer>().bounds.extents.x;
         _rangeCircle.gameObject.SetActive(false);
+        _targets = new List<EnemyController>();
         _attackTimer = 0.0f;
-        _attackController = GetComponent<TowerAttackController>();
-        _attackController.Init();
+        _targetFinder = GetComponent<TowerTargetFinder>();
+        _targetFinder.Init(_stats);
+        _towerAttack = GetComponent<TowerAttack>();
+        _towerAttack.Init(this);
         _isAttacking = false;
     }
 
     private void UpdateTarget()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, _range, _enemyLayer);
-
-        EnemyController closestEnemy = null;
-        float closestProgress = -1.0f;
-
-        foreach (Collider2D enemyCollider in enemies)
-        {
-            EnemyController enemy = enemyCollider.GetComponentInParent<EnemyController>();
-
-            if (enemy == null || enemy.State == EnemyState.Dead) continue;
-
-            float progress = enemy.Progress;
-
-            if (progress > closestProgress)
-            {
-                closestProgress = progress;
-                closestEnemy = enemy;
-            }
-        }
-
-        _target = closestEnemy;
+        _targets = _targetFinder.FindTargets();
     }
 
     private void LookAtTarget()
     {
-        Vector3 direction = _target.transform.position - transform.position;
+        if (_targets.Count == 0 || _stats.TargetCountType == TargetCountType.All) return;
 
+        Vector3 direction = _targets[0].transform.position - transform.position;
         if (Mathf.Abs(direction.x) > 0.001f)
         {
             _spriteRenderer.flipX = direction.x < 0.0f;
@@ -82,15 +74,21 @@ public class TowerController : MonoBehaviour
         _animator.SetTrigger("Attack");
     }
 
-    public void FireProjectile()
+    public void ExecuteAttack()
     {
-        _attackController.Attack(_target);
+        _towerAttack.Attack(_targets);
     }
 
     public void EndAttack()
     {
-        _attackTimer = _towerData.AttackCooldown / _attackSpeed;
+        _attackTimer = _stats.AttackCooldown / _attackSpeed;
         _isAttacking = false;
+    }
+
+    public Transform GetFirePoint(EnemyController target)
+    {
+        Vector3 direction = target.transform.position - transform.position;
+        return _spriteRenderer.flipX ? _leftFirePoint : _rightFirePoint;
     }
 
     private void Update()
@@ -98,7 +96,7 @@ public class TowerController : MonoBehaviour
         UpdateTarget();
         UpdateAttackCooldown();
 
-        if (_target != null)
+        if (_targets.Count > 0)
         {
             LookAtTarget();
 

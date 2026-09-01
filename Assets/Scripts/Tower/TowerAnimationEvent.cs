@@ -9,9 +9,9 @@ public class TowerAnimationEvent : MonoBehaviour
         _towerController = GetComponentInParent<TowerController>();
     }
 
-    public void FireProjectile()
+    public void ExecuteAttack()
     {
-        _towerController.FireProjectile();
+        _towerController.ExecuteAttack();
     }
 
     public void EndAttack()

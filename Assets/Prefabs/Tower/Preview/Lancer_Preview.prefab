@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6666968621620988986}
-  - component: {fileID: 5321157402111841570}
-  m_Layer: 10
-  m_Name: TowerPreview_Archer
+  - component: {fileID: 2764491432648351060}
+  m_Layer: 9
+  m_Name: Lancer_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 279949496298938280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5321157402111841570
+--- !u!114 &2764491432648351060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 279949496298938280}
   - component: {fileID: 7718944358650489508}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: PlacementCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +116,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.002552718, y: 0.053598523}
-  m_Size: {x: 0.8754105, y: 1.3627386}
+  m_Offset: {x: -0.022360027, y: -0.010095358}
+  m_Size: {x: 0.825585, y: 1.1912422}
   m_Direction: 0
 --- !u!1 &3812636671278756986
 GameObject:
@@ -129,7 +129,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4891012770870894249}
   - component: {fileID: 8257952871516983087}
-  m_Layer: 10
+  - component: {fileID: 1576362961196252701}
+  - component: {fileID: 451452703152865312}
+  m_Layer: 9
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,9 +200,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -335327969
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7257567913506708742, guid: 72c22f22ea5e4488390ba536cd5ab98d, type: 3}
+  m_Sprite: {fileID: -594197781322936934, guid: 2307ce0d618cb4ea2be2cb2a4148cbde, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,6 +212,40 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1576362961196252701
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812636671278756986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa7ae5cd619544ca4a4ea82a50baa12d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &451452703152865312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812636671278756986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a40d394957e0ea48a5a2c62dd1941d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAnimationEvent
 --- !u!1 &9183698721035871010
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4039144707931516251}
   - component: {fileID: 5716929090879906316}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: RangeCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
