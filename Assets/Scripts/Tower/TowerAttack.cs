@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
 {
-    [SerializeField] private List<AttackEffect> _effects;
-
     private TowerController _tower;
     private TowerAttackType _attackType;
     private ProjectileController _projectilePrefab;
@@ -54,7 +52,7 @@ public class TowerAttack : MonoBehaviour
 
             Transform firePoint = _tower.GetFirePoint(target);
             ProjectileController projectile = Instantiate(_projectilePrefab, firePoint.position, firePoint.rotation);
-            projectile.Init(_tower, target, _effects);
+            projectile.Init(_tower, target, _tower.Stats.Effects);
         }
     }
 
@@ -70,9 +68,9 @@ public class TowerAttack : MonoBehaviour
 
     private void ApplyEffects(EnemyController target)
     {
-        foreach (AttackEffect effect in _effects)
+        foreach (AttackEffect effect in _tower.Stats.Effects)
         {
-            if (effect == null)continue;
+            if (effect == null) continue;
 
             effect.Apply(_tower, target);
         }

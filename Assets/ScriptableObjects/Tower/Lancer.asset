@@ -24,5 +24,7 @@ MonoBehaviour:
   _targetCountType: 0
   _targetCount: 1
   _attackType: 1
+  _effects:
+  - {fileID: 11400000, guid: b54e6849c462fa745b227483f03fbd76, type: 2}
+  - {fileID: 11400000, guid: 58bfc72ca51c2c4419235a51a41ce5ed, type: 2}
   _projectilePrefab: {fileID: 0}
-  _knockback: 1

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13ee0ccb6668d8445a819dfbaba25996, type: 3}
-  m_Name: Archer
+  m_Name: Monk
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  _towerName: Archer
-  _icon: {fileID: 21300000, guid: 8fd2d0449599e4f7a9a1f1f170b6a2b0, type: 3}
-  _towerPrefab: {fileID: 1628271738554773605, guid: 43acd856f3fc54d4fb4ba0527600ac5a, type: 3}
-  _previewPrefab: {fileID: 1628271738554773605, guid: 62776d50893455041bf1f891d2c3c25d, type: 3}
+  _towerName: Monk
+  _icon: {fileID: 21300000, guid: f846c6072ceb0445bbcb59c41b57a5cb, type: 3}
+  _towerPrefab: {fileID: 1628271738554773605, guid: 1f6443d6c4503074f9c2c5d63cc300b0, type: 3}
+  _previewPrefab: {fileID: 1628271738554773605, guid: 381113474246f8b428dda2a3887b7a45, type: 3}
   _cost: 0
-  _range: 6
-  _damage: 20
+  _range: 5
+  _damage: 0
   _attackCooldown: 1
   _targetingType: 0
   _targetCountType: 0
   _targetCount: 1
   _attackType: 0
   _effects:
-  - {fileID: 11400000, guid: b54e6849c462fa745b227483f03fbd76, type: 2}
-  _projectilePrefab: {fileID: -4512764681886010749, guid: 4fa81c1061697c94383e7b2962265773, type: 3}
+  - {fileID: 11400000, guid: f128acbdcc5983e408af0e326f5327d0, type: 2}
+  _projectilePrefab: {fileID: -4512764681886010749, guid: e651d98a748cd9f46a393a42fc933f80, type: 3}

@@ -124,6 +124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8772373294441655491}
   - component: {fileID: 5848090979954732457}
+  - component: {fileID: 5668955157855191514}
+  - component: {fileID: 3833346844509205769}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -164,6 +166,30 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1479481488313045131}
   _animator: {fileID: 1861396579766867997}
   _enemyUI: {fileID: 5695981395237504807}
+--- !u!114 &5668955157855191514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959078697354872282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d84f6f5148487c4fb1bf76e5938f304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
+--- !u!114 &3833346844509205769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4959078697354872282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d84c6d5f33b1d4ca4f9412430062e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVisualEffectController
 --- !u!1 &5431180019819578509
 GameObject:
   m_ObjectHideFlags: 0

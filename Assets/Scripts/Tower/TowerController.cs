@@ -27,7 +27,7 @@ public class TowerController : MonoBehaviour
     {
         _data = data;
         _stats = new TowerStats(data);
-        _rangeCircle.localScale = Vector3.one * data.Range;
+        _rangeCircle.localScale = Vector3.one * _stats.Range;
         _range = _rangeCircle.GetComponent<SpriteRenderer>().bounds.extents.x;
         _rangeCircle.gameObject.SetActive(false);
         _targets = new List<EnemyController>();

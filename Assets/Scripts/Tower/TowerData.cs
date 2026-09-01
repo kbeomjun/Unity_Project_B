@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum TargetingType
@@ -36,8 +37,8 @@ public class TowerData : ScriptableObject
     [SerializeField] private TargetCountType _targetCountType;
     [SerializeField] private int _targetCount;
     [SerializeField] private TowerAttackType _attackType;
+    [SerializeField] private List<AttackEffect> _effects;
     [SerializeField] private ProjectileController _projectilePrefab;
-    [SerializeField] private float _knockback;
 
     public string TowerName => _towerName;
     public Sprite Icon => _icon;
@@ -51,6 +52,6 @@ public class TowerData : ScriptableObject
     public TargetCountType TargetCountType => _targetCountType;
     public int TargetCount => _targetCount;
     public TowerAttackType AttackType => _attackType;
+    public List<AttackEffect> Effects => _effects;
     public ProjectileController ProjectilePrefab => _projectilePrefab;
-    public float Knockback => _knockback;
 }
